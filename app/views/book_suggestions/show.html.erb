@@ -1,0 +1,32 @@
+
+
+<h1>Book Suggestions</h1>
+
+<% @book_suggestion.each do |book_suggestion| %>
+  <div id="<%= dom_id book_suggestion %>">
+    <p>
+      <strong>Title:</strong>
+      <%= book_suggestion.title %>
+    </p>
+
+
+        <p>
+      <strong>Description:</strong>
+      <%= book_suggestion.description %>
+    </p>
+
+    <p>
+
+
+   <% if current_user.admin?  %>
+  <%= form_tag approve_book_suggestion_path(book_suggestion), method: :patch do %>
+    <%= submit_tag "Approve" %>
+  <% end %>
+  
+  <%= form_tag reject_book_suggestion_path(book_suggestion), method: :delete, data: { confirm: "Are you sure you want to reject this suggestion?" } do %>
+    <%= submit_tag "Reject" %>
+  <% end %>
+<% end %>
+
+  </div>
+<% end %>

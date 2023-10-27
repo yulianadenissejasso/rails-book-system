@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookaholics 2.0</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <strong>Navigation: </strong>
+    <div class="nav-link">
+    <%= link_to 'Home', root_path %> -
+    <%= link_to 'All Books', books_path %> -
+    <%= link_to 'Unread Books', unread_books_path %> -
+    <%= link_to 'Read Books', read_books_path %> -
+     <%= link_to 'All Book Suggestions', book_suggestions_path %> -
+  
+
+
+      <% if user_signed_in? %>
+            <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
+      <% else %>
+            <a href="/users/sign_in">Sign In</a> 
+      <% end %>
+    </div>
+    <% if flash[:error] %>
+      <div id="error_explanation">
+        <p><%= flash[:error] %></p>
+      </div>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>

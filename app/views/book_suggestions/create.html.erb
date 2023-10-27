@@ -1,0 +1,27 @@
+<h1>New Book Suggestion</h1>
+
+<%= form_with model: @book_suggestion, url: book_suggestions_path, method: :post do |form| %>
+  <% if @book_suggestion.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@book_suggestion.errors.count, "error") %> prohibited this book suggestion from being saved:</h2>
+      <ul>
+        <% @book_suggestion.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+
+  <%= form.submit "Submit" %>
+<% end %>
+
+<%= link_to "Back", book_suggestions_path %>
+
+
+<% end %>

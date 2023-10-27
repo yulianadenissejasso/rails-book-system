@@ -1,0 +1,12 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Read Books</h1>
+
+<div id="books">
+  <% @books.each do |book| %>
+    <%= render book %>
+    <p>
+    </p>
+  <% end %>
+</div>
+

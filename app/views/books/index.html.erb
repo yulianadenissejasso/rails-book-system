@@ -1,0 +1,21 @@
+<p style="color: green"><%= notice %></p>
+
+<% if current_user.admin? %>
+  <%= link_to "New book", new_book_path %>
+<% else %>
+  <%= link_to "New book recommendation", new_book_suggestion_path %>
+<% end %>
+
+
+
+<h1>Books</h1>
+
+<div id="books">
+  <% @books.each do |book| %>
+    <%= render book %>
+    <p>
+      <%= link_to "Show this book", book %>
+    </p>
+  <% end %>
+</div>
+
